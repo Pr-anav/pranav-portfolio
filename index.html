@@ -676,18 +676,32 @@ COMPANY LOGO CARD
 }
 
 
-.glass-card:hover{
+/* =========================
+REMOVE ANIMATION FOR TEMENOS CARD
+========================= */
 
-    transform:
-    translateY(-8px)
-    scale(1.02);
+.temenos-card,
+.temenos-card:hover{
 
-    box-shadow:
-    0 0 20px rgba(168,85,247,.3),
-    0 0 40px rgba(168,85,247,.2);
+    transform:none !important;
 
+    box-shadow:none !important;
 }
 
+/* remove purple glow movement */
+
+.temenos-card::before,
+.temenos-card:hover::before{
+
+    top:-150px !important;
+    left:-150px !important;
+}
+
+/* disable tilt effect visually */
+
+.temenos-card{
+    transition:none !important;
+}
 .glass-card::before{
 
     content:'';
@@ -1747,7 +1761,7 @@ RESPONSIVE
     </div>
 
 
-<div class="glass-card reveal">
+<div class="glass-card reveal temenos-card">
 
     <!-- COMPANY HEADER -->
     <div class="company-header">
