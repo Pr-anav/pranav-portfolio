@@ -1,144 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranav Kumar | Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pranav Kumar | Portfolio</title>
 
-    body {
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
 
-    header {
-      background: linear-gradient(to right, #eff6ff, #dbeafe);
-      padding: 80px 20px;
-      text-align: center;
-    }
+body{
+  background:#0a0a0f;
+  color:white;
+  overflow-x:hidden;
+}
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      color: #2563eb;
-    }
+/* ================= BACKGROUND ================= */
+.background {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-3;
+  background: url("/mnt/data/c12aedb5-3841-4c8b-835b-eca8d2a4d133.png") center/cover no-repeat;
+  filter: brightness(0.25) blur(1px);
+}
 
-    header p {
-      max-width: 700px;
-      margin: auto;
-      color: #475569;
-      font-size: 1.1rem;
-    }
+/* dark overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle at top, rgba(138,43,226,0.25), transparent 60%),
+              radial-gradient(circle at bottom, rgba(0,200,255,0.15), transparent 60%);
+  z-index:-2;
+}
 
-    .profile-img {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: center;
-        border: 6px solid white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        margin-bottom: 25px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+/* ================= FLOATING GADGETS ================= */
+.gadget{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(160,120,255,0.8);
+  animation: float 8s infinite linear;
+}
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.gadget:nth-child(1){ top:10%; left:15%; }
+.gadget:nth-child(2){ top:30%; left:80%; }
+.gadget:nth-child(3){ top:70%; left:25%; }
+.gadget:nth-child(4){ top:50%; left:60%; }
+.gadget:nth-child(5){ top:85%; left:75%; }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #0f172a;
-    }
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-30px);}
+  100%{transform:translateY(0);}
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
-    }
+/* ================= NAVBAR ================= */
+nav{
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(10,10,15,0.6);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  z-index:10;
+}
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+nav h2{
+  color:#a855f7;
+}
 
-    .skill {
-      background: white;
-      padding: 12px 20px;
-      border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      font-weight: 600;
-    }
+nav a{
+  color:#ddd;
+  margin:0 12px;
+  text-decoration:none;
+  font-size:14px;
+}
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #0f172a;
-      color: white;
-    }
+nav a:hover{
+  color:white;
+}
 
-    a {
-      color: #2563eb;
-      text-decoration: none;
-    }
+/* ================= HERO ================= */
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:50px;
+  padding:80px 10%;
+  min-height:90vh;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 25px;
-      background: #2563eb;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+/* LEFT IMAGE */
+.hero-img img{
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 40px rgba(168,85,247,0.4);
+}
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
-  </style>
+/* RIGHT CARD */
+.hero-card{
+  background:rgba(255,255,255,0.05);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter: blur(15px);
+  border:1px solid rgba(255,255,255,0.1);
+  max-width:500px;
+}
+
+.hero-card h1{
+  font-size:38px;
+  color:#c084fc;
+}
+
+.hero-card p{
+  margin-top:10px;
+  color:#ccc;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  background:#a855f7;
+  border-radius:10px;
+  color:white;
+  text-decoration:none;
+}
+
+/* ================= SECTIONS ================= */
+section{
+  padding:70px 10%;
+}
+
+.section-title{
+  font-size:26px;
+  margin-bottom:20px;
+  color:#c084fc;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  margin-bottom:20px;
+}
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.skill{
+  padding:8px 15px;
+  background:rgba(168,85,247,0.2);
+  border:1px solid rgba(168,85,247,0.4);
+  border-radius:20px;
+  font-size:13px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#aaa;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <img src="pranav-image.png" alt="Pranav Kumar" class="profile-img">
+<div class="background"></div>
+<div class="overlay"></div>
 
+<!-- floating gadgets -->
+<div class="gadget"></div>
+<div class="gadget"></div>
+<div class="gadget"></div>
+<div class="gadget"></div>
+<div class="gadget"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>Pranav.dev</h2>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+
+  <!-- LEFT IMAGE -->
+  <div class="hero-img">
+    <img src="pranav-image.png" />
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="hero-card">
     <h1>Pranav Kumar</h1>
-    <p>
-      Implementation Consultant specializing in enterprise implementations,
-      API integrations, stakeholder management, and scalable technology solutions.
-    </p>
-    <a href="https://www.linkedin.com/in/pranav" class="btn">Connect on LinkedIn</a>
-  </header>
+    <p>Implementation Consultant specializing in ATS, HRIS, API integrations, and enterprise system deployments across global clients.</p>
+    <a class="btn" href="#">Download Resume</a>
+	<a href="https://www.linkedin.com/in/pranav" class="btn">Connect on LinkedIn</a>
+  </div>
 
-  <section>
-    <h2>About Me</h2>
-    <div class="card">
-      <p>
-        Results-driven consultant with 6+ years of experience delivering enterprise
-        solutions and leading implementation projects. Experienced in Java, SQL,
-        API Integration, Unix/Linux, Implementations, and client-facing delivery.
-      </p>
-    </div>
-  </section>
+</div>
 
-  <section>
-    <h2>Experience</h2>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">About Me</div>
+  <div class="card">
+    Results-driven Implementation Consultant with 6 years experience in enterprise ATS/HRIS platforms, API integrations,
+    SaaS deployments, and end-to-end implementation lifecycle delivery.
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title">Skills</div>
+  <div class="skills">
+    <div class="skill">Java</div>
+    <div class="skill">SQL</div>
+    <div class="skill">API Integration</div>
+    <div class="skill">Workday Integration</div>
+    <div class="skill">SAP Integration</div>
+    <div class="skill">Oracle HCM</div>
+    <div class="skill">Pre-sales Support</div>
+    <div class="skill">Postman</div>
+	<div class="skill">Project Delivery</div>
+    <div class="skill">Stakeholder Management</div>
+    <div class="skill">Solution Design</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-title">Experience</div>
 
     <div class="card">
       <h3>Implementation Consultant — SHL</h3>
@@ -175,36 +293,20 @@
         and knowledge transfer activities that enhanced system stability and reduced post-implementation issues.
       </p>
     </div>
-  </section>
+</section>
 
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">Java</div>
-      <div class="skill">SQL</div>
-      <div class="skill">API Integration</div>
-      <div class="skill">Solution Design</div>
-      <div class="skill">Pre-Sales Support</div>
-      <div class="skill">Unix/Linux</div>
-      <div class="skill">Stakeholder Management</div>
-      <div class="skill">Implementation Consulting</div>
-      <div class="skill">Microservices</div>
-      <div class="skill">Project Delivery</div>
-    </div>
-  </section>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">Contact</div>
+  <div class="card">
+    Email: pranav@example.com <br/>
+    LinkedIn: linkedin.com/in/pranav
+  </div>
+</section>
 
-  <section>
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: pranav.kumar.resume@gmail.com</p>
-      <p>LinkedIn: <a href="https://linkedin.com">linkedin.com/in/pranav</a></p>
-      <p>GitHub: <a href="https://github.com">github.com/pr-anav</a></p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Pranav Kumar | Portfolio</p>
-  </footer>
+<footer>
+  © 2026 Pranav Kumar | Built with Modern UI
+</footer>
 
 </body>
 </html>
