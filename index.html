@@ -614,6 +614,67 @@ CARDS
 
     transition:.4s;
 }
+/* =========================
+COMPANY LOGO CARD
+========================= */
+
+.company-header{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+/* company logo */
+
+.company-logo{
+
+    width:70px;
+    height:70px;
+
+    object-fit:contain;
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 0 15px rgba(255,255,255,.12),
+    0 0 25px rgba(168,85,247,.25);
+
+    transition:.4s;
+}
+
+.glass-card:hover .company-logo{
+
+    transform:
+    scale(1.08)
+    rotate(3deg);
+
+    box-shadow:
+    0 0 20px rgba(168,85,247,.45),
+    0 0 40px rgba(168,85,247,.25);
+}
+
+/* text */
+
+.company-info h3{
+
+    font-size:24px;
+    color:#fff;
+    margin-bottom:6px;
+}
+
+.company-info span{
+
+    color:#bb86fc;
+    font-size:15px;
+    font-weight:500;
+}
+
 
 .glass-card:hover{
 
@@ -650,7 +711,144 @@ CARDS
     top:-80px;
     left:-80px;
 }
+/* =========================
+CAREER PATH
+========================= */
 
+.career-path{
+
+    position:relative;
+
+    margin-top:30px;
+    padding-left:30px;
+}
+
+/* vertical line */
+
+.career-path::before{
+
+    content:'';
+
+    position:absolute;
+
+    left:8px;
+    top:0;
+
+    width:3px;
+    height:100%;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #a855f7,
+        rgba(168,85,247,.2)
+    );
+
+    border-radius:20px;
+}
+
+/* step */
+
+.career-step{
+
+    position:relative;
+    margin-bottom:35px;
+}
+
+/* glowing dot */
+
+.career-dot{
+
+    position:absolute;
+
+    left:-27px;
+    top:8px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#bb86fc;
+
+    box-shadow:
+    0 0 10px #a855f7,
+    0 0 20px #a855f7;
+}
+
+/* content */
+
+.career-content{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    padding:22px;
+
+    border-radius:18px;
+
+    transition:.4s;
+}
+
+.career-content:hover{
+
+    transform:translateX(8px);
+
+    background:rgba(168,85,247,.08);
+
+    box-shadow:
+    0 0 20px rgba(168,85,247,.18);
+}
+
+/* top row */
+
+.career-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:10px;
+}
+
+.career-top h4{
+
+    color:white;
+    font-size:20px;
+}
+
+/* badge */
+
+.career-badge{
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #a855f7,
+        #9333ea
+    );
+
+    font-size:13px;
+
+    color:white;
+
+    box-shadow:
+    0 0 12px rgba(168,85,247,.4);
+}
+
+/* duration */
+
+.career-duration{
+
+    color:#bb86fc;
+    margin-bottom:12px;
+    font-size:14px;
+}
 /* =========================
 SKILLS
 ========================= */
@@ -709,41 +907,552 @@ REVEAL
     opacity:1;
     transform:translateY(0);
 }
-
 /* =========================
-CONTACT
+ADVANCED TIMELINE
 ========================= */
 
-.contact-icons{
-    display:flex;
-    gap:20px;
-    margin-top:25px;
+.timeline{
+    position:relative;
+    max-width:1200px;
+    margin:auto;
+    padding:60px 0;
 }
 
-.contact-icons a{
-    width:50px;
-    height:50px;
+/* animated center line */
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.timeline::before{
+
+    content:'';
+
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:5px;
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+        to bottom,
+        transparent,
+        #a855f7,
+        #bb86fc,
+        transparent
+    );
+
+    border-radius:20px;
+
+    animation:timelineGlow 3s linear infinite;
+}
+
+@keyframes timelineGlow{
+
+    0%{
+        filter:drop-shadow(0 0 5px #a855f7);
+    }
+
+    50%{
+        filter:drop-shadow(0 0 18px #bb86fc);
+    }
+
+    100%{
+        filter:drop-shadow(0 0 5px #a855f7);
+    }
+
+}
+
+/* containers */
+
+.timeline-container{
+    position:relative;
+    width:50%;
+    padding:30px 50px;
+}
+
+/* left/right */
+
+.left{
+    left:0;
+}
+
+.right{
+    left:50%;
+}
+
+/* glowing node */
+
+.timeline-container::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:45px;
+
+    width:24px;
+    height:24px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.08);
+    background:#bb86fc;
+
+    border:4px solid #0d0d0d;
+
+    box-shadow:
+    0 0 10px #a855f7,
+    0 0 25px #a855f7;
+
+    z-index:5;
+}
+
+.left::before{
+    right:-12px;
+}
+
+.right::before{
+    left:-12px;
+}
+
+/* cards */
+
+.timeline-content{
+
+    position:relative;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:35px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(14px);
+
+    overflow:hidden;
+
+    transition:.5s;
+}
+
+.timeline-content:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+    0 0 25px rgba(168,85,247,.35),
+    0 0 50px rgba(168,85,247,.15);
+
+}
+
+/* top row */
+
+.timeline-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+/* logo */
+
+.timeline-logo{
+
+    width:70px;
+    height:70px;
+
+    border-radius:18px;
+
+    object-fit:cover;
+
+    background:white;
+
+    padding:8px;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.15);
+}
+
+/* year badge */
+
+.year-badge{
+
+    padding:10px 18px;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #a855f7,
+        #9333ea
+    );
 
     color:white;
 
-    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
 
-    transition:.3s;
-
-    font-size:20px;
+    box-shadow:
+    0 0 15px rgba(168,85,247,.5);
 }
 
-.contact-icons a:hover{
-    background:#a855f7;
-    transform:translateY(-5px);
+/* icon */
+
+.timeline-icon{
+
+    font-size:26px;
+    color:#bb86fc;
+    margin-bottom:15px;
+}
+
+/* titles */
+
+.timeline-content h3{
+    font-size:26px;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.timeline-content h4{
+    color:#bb86fc;
+    margin-bottom:15px;
+    font-weight:500;
+}
+
+/* score badge */
+
+.score-badge{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:rgba(168,85,247,.15);
+
+    border:1px solid rgba(168,85,247,.4);
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+    font-size:14px;
+}
+
+/* description */
+
+.timeline-content p{
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* scroll animation */
+
+.timeline-container{
+    opacity:0;
+    transform:translateY(100px);
+    transition:all 1s ease;
+}
+
+.timeline-container.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* responsive */
+
+@media(max-width:900px){
+
+    .timeline::before{
+        left:20px;
+    }
+
+    .timeline-container{
+        width:100%;
+        padding-left:70px;
+        padding-right:20px;
+    }
+
+    .right{
+        left:0;
+    }
+
+    .left::before,
+    .right::before{
+        left:8px;
+    }
+
+}
+
+/* =========================
+PREMIUM CONTACT SECTION
+========================= */
+
+.contact-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    align-items:stretch;
+
+    margin-top:50px;
+}
+
+/* BOTH CARDS */
+
+.contact-info,
+.contact-form-box{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+/* LEFT SIDE */
+
+.contact-info{
+
+    justify-content:space-between;
+}
+
+.contact-info h2{
+
+    font-size:38px;
+
+    line-height:1.3;
+
+    color:white;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    text-transform:capitalize;
+
+    text-shadow:
+    0 0 10px rgba(168,85,247,.35);
+}
+
+/* CONTACT DETAILS */
+
+.contact-detail{
+
+    margin-bottom:30px;
+}
+
+.contact-detail h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#bb86fc;
+
+    margin-bottom:10px;
+
+    font-size:18px;
+}
+
+.contact-detail p{
+
+    color:white;
+
+    font-size:17px;
+
+    line-height:1.8;
+}
+
+/* SOCIAL GRID */
+
+.social-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin:30px 0;
+}
+
+.social-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.4s ease;
+}
+
+.social-card:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.02);
+
+    background:rgba(168,85,247,.12);
+
+    box-shadow:
+    0 0 20px rgba(168,85,247,.25);
+}
+
+.social-card i{
+
+    font-size:22px;
+
+    color:#bb86fc;
+}
+
+/* QUOTE */
+
+.quote-box{
+
+    margin-top:auto;
+
+    padding:25px;
+
+    border-left:4px solid #a855f7;
+
+    background:rgba(255,255,255,.03);
+
+    border-radius:18px;
+}
+
+.quote-box p{
+
+    font-style:italic;
+
+    line-height:1.9;
+
+    color:#ddd;
+
+    margin-bottom:12px;
+}
+
+.quote-box span{
+
+    color:#bb86fc;
+
+    font-weight:600;
+}
+
+/* RIGHT SIDE FORM */
+
+.contact-form-box h2{
+
+    color:white;
+
+    margin-bottom:25px;
+
+    font-size:28px;
+}
+
+.contact-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    flex:1;
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+
+    border:1px solid #a855f7;
+
+    box-shadow:
+    0 0 18px rgba(168,85,247,.25);
+
+    background:rgba(255,255,255,.07);
+}
+
+.contact-form textarea{
+
+    resize:none;
+
+    min-height:180px;
+}
+
+/* BUTTON FULL WIDTH */
+
+.contact-form button{
+
+    width:100%;
+
+    margin-top:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .contact-wrapper{
+
+        grid-template-columns:1fr;
+    }
+
+    .social-grid{
+
+        grid-template-columns:1fr;
+    }
+
 }
 
 /* =========================
@@ -869,8 +1578,9 @@ RESPONSIVE
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
+		<a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="PranavKumar.pdf" target="_blank"></a>
+        <a href="assets/resume.pdf" target="_blank">Resume</a>
 
     </div>
 
@@ -880,7 +1590,7 @@ RESPONSIVE
 <section class="hero">
 
     <div class="hero-image">
-        <img src="pranav-image.png" alt="Pranav Kumar">
+        <img src="./pranav-image.png" alt="Pranav Kumar">
     </div>
 
     <div class="hero-content">
@@ -901,7 +1611,7 @@ RESPONSIVE
 
             <div class="hero-buttons">
 
-                <a href="./PranavKumar.pdf"
+                <a href="assets/resume.pdf"
                    target="_blank"
                    class="btn primary-btn">
 
@@ -972,7 +1682,23 @@ RESPONSIVE
 
     <div class="glass-card reveal">
 
-        <h3>SHL — Implementation Consultant (June 2025 - Present)</h3>
+      
+<div class="company-header">
+
+    <img src="./shl-logo.png"
+         alt="SHL"
+         class="company-logo">
+
+    <div class="company-info">
+
+        <h3>Implementation Consultant</h3>
+
+        <span>SHL • June 2025 - Present</span>
+
+    </div>
+
+</div>
+
 
         <br>
 
@@ -991,7 +1717,23 @@ RESPONSIVE
 
     <div class="glass-card reveal">
 
-        <h3>HighRadius — Consultant I (Dec 2024 - June 2025)</h3>
+      
+<div class="company-header">
+
+    <img src="./highradius-logo.png"
+         alt="HighRadius"
+         class="company-logo">
+
+    <div class="company-info">
+
+        <h3>Consultant I</h3>
+
+        <span>HighRadius • Dec 2024 - June 2025</span>
+
+    </div>
+
+</div>
+
 
         <br>
 
@@ -1004,59 +1746,334 @@ RESPONSIVE
 
     </div>
 
-    <div class="glass-card reveal">
 
-        <h3>Temenos — Lead Consultant (June 2021 - Dec 2024)</h3>
+<div class="glass-card reveal">
 
-        <br>
+    <!-- COMPANY HEADER -->
+    <div class="company-header">
 
-        <p>
-        As a Lead Consultant at Temenos, I led the implementation and upgrade of enterprise banking solutions across global clients, 
-        delivering complex transformation projects within aggressive timelines while improving client satisfaction and operational efficiency. 
-        I collaborated with PMO teams, senior leadership, and stakeholders to define project scope, optimize resource planning, and ensure 
-        seamless delivery of banking platform upgrades and integrations. With experience supporting 15+ projects across 10+ countries, 
-        I specialized in core banking solution upgrades, code conversion, issue resolution, process optimization, 
-        and knowledge transfer activities that enhanced system stability and reduced post-implementation issues.
-        </p>
+        <img src="./temenos-logo.png"
+             alt="Temenos"
+             class="company-logo">
+
+        <div class="company-info">
+
+            <h3>Temenos</h3>
+
+            <span>Aug 2021 - Dec 2024</span>
+
+        </div>
+
+    </div>
+
+    <!-- CAREER TIMELINE -->
+    <div class="career-path">
+        <!-- ROLE 3 -->
+        <div class="career-step">
+
+            <div class="career-dot"></div>
+
+            <div class="career-content">
+
+                <div class="career-top">
+
+                    <h4>Lead Technical Consultant</h4>
+
+                    <div class="career-badge">
+                        2023 - 2024
+                    </div>
+
+                </div>
+
+                <p class="career-duration">
+                    Jul 2023 - Dec 2024 • Bengaluru, Karnataka
+                </p>
+
+                <p>
+                    Led cross-functional teams in delivering two international upgrade projects within challenging 8-month timelines, contributing to a 20% improvement in client satisfaction. Collaborated with PMO teams and senior leadership to define project scope, optimize delivery strategies, and ensure implementations were completed on time and within budget. Improved billable utilization by 10% through effective resource planning, performance tracking, and alignment of delivery goals with business objectives. Additionally, spearheaded knowledge transfer and client enablement sessions, reducing post-implementation issues by 25% and improving overall solution stability.
+                </p>
+
+            </div>
+
+        </div>
+ 
+
+        <!-- ROLE 2 -->
+        <div class="career-step">
+
+            <div class="career-dot"></div>
+
+            <div class="career-content">
+
+                <div class="career-top">
+
+                    <h4>Technical Consultant</h4>
+
+                    <div class="career-badge">
+                        2022 - 2023
+                    </div>
+
+                </div>
+
+                <p class="career-duration">
+                    Jul 2022 - Jun 2023 • Bengaluru, Karnataka
+                </p>
+
+                <p>
+                    Developed and executed optimization strategies across multiple T24 modules, driving a 15% improvement in operational efficiency through innovative banking solutions and process enhancements. Supported enterprise upgrade implementations by resolving complex technical issues, collaborating with cross-functional teams, and ensuring seamless delivery across client environments. Worked closely with stakeholders and internal teams to enhance client experience, streamline implementation activities, and maintain high-quality delivery standards throughout the project lifecycle.
+                </p>
+
+            </div>
+
+        </div>
+
+       <!-- ROLE 1 -->
+        <div class="career-step">
+
+            <div class="career-dot"></div>
+
+            <div class="career-content">
+
+                <div class="career-top">
+
+                    <h4>Associate Consultant</h4>
+
+                    <div class="career-badge">
+                        2021 - 2022
+                    </div>
+
+                </div>
+
+                <p class="career-duration">
+                    Aug 2021 - Jun 2022 • Bengaluru, Karnataka
+                </p>
+
+                <p>
+                   Supported 15+ upgrade and transformation projects across 10+ countries, consistently delivering solutions within aggressive timelines while maintaining a 90% project success rate and high client satisfaction. Collaborated closely with stakeholders to refine project scope, optimize delivery strategies, and enhance implementation efficiency. Specialized in resolving complex L3 production issues, code conversion activities, and test script remediation, ensuring seamless system upgrades and stable enterprise banking operations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+<!-- EDUCATION -->
+<section id="education">
+
+    <h2 class="section-title">Education Journey</h2>
+
+    <div class="timeline">
+
+        <!-- BTECH -->
+        <div class="timeline-container left">
+
+            <div class="timeline-content">
+
+                <div class="timeline-top">
+
+                    <img src="./iter-logo.png"
+                         class="timeline-logo">
+
+                    <div class="year-badge">
+                        2017 - 2021
+                    </div>
+
+                </div>
+
+                <div class="timeline-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+
+                <h3>Bachelor of Technology</h3>
+
+                <h4>ITER, Bhubaneswar</h4>
+
+                <div class="score-badge">
+                    CGPA: 9.19 / 10
+                </div>
+
+                <p>
+                    Specialized in Computer Science Engineering with focus on
+                    Enterprise Systems, Java Development, Database Systems,
+                    and Software Architecture.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SCHOOL -->
+        <div class="timeline-container right">
+
+            <div class="timeline-content">
+
+                <div class="timeline-top">
+
+                    <img src="./dav-logo.png"
+                         class="timeline-logo">
+
+                    <div class="year-badge">
+                        2014 - 2016
+                    </div>
+
+                </div>
+
+                <div class="timeline-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+
+                <h3>Higher Secondary Education</h3>
+
+                <h4>DAV Public School, Bokaro</h4>
+
+                <div class="score-badge">
+                    Percentage: 83.4%
+                </div>
+
+                <p>
+                    Focused on Mathematics, Physics, Chemistry,
+                    and Computer Science fundamentals.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
 
-    <h2 class="section-title">Contact</h2>
+    <div class="contact-wrapper">
 
-    <div class="glass-card reveal">
+        <!-- LEFT SIDE -->
+        <div class="glass-card reveal contact-info">
 
-        <p>Email: pranav.kumar.resume@gmail.com</p>
+            <h2>
+                Let’s Work Together
+            </h2>
 
-        <br>
+            <p style="line-height:1.9; color:#ddd; margin-bottom:35px;">
+                I’m always open to discussing enterprise consulting opportunities,
+                digital transformation initiatives, SaaS implementations,
+                and innovative technology solutions. Whether it’s a challenging
+                project, strategic collaboration, or a meaningful conversation
+                about technology and business transformation — I’d love to connect.
+            </p>
 
-        <p>Open to relocation and global opportunities.</p>
+            <div class="contact-detail">
 
-        <div class="contact-icons">
+                <h3>
+                    <i class="fas fa-paper-plane"></i>
+                    Send an Email
+                </h3>
 
-            <a href="https://linkedin.com"
-               target="_blank">
+                <p>
+                    pranav.kumar.resume@gmail.com
+                </p>
 
-                <i class="fab fa-linkedin"></i>
+            </div>
 
-            </a>
+            <!-- SOCIAL LINKS -->
+            <div class="social-grid">
 
-            <a href="https://github.com"
-               target="_blank">
+                <a href="www.linkedin.com/in/pranav-kumar-991117172"
+                   target="_blank"
+                   class="social-card">
 
-                <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
 
-            </a>
+                </a>
 
-            <a href="mailto:pranav.kumar.resume@gmail.com">
+                <a href="https://github.com/discussions"
+                   target="_blank"
+                   class="social-card">
 
-                <i class="fas fa-envelope"></i>
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
 
-            </a>
+                </a>
+
+                <a href="https://leetcode.com"
+                   target="_blank"
+                   class="social-card">
+
+                    <i class="fas fa-code"></i>
+                    <span>LeetCode</span>
+
+                </a>
+
+                <a href="https://instagram.com"
+                   target="_blank"
+                   class="social-card">
+
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+
+                </a>
+
+            </div>
+
+            <!-- QUOTE -->
+            <div class="quote-box">
+
+                <p>
+                    “The only way to do great work
+                    is to love what you do.”
+                </p>
+
+                <span>— Steve Jobs</span>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="glass-card reveal contact-form-box">
+
+<h2 style="
+    margin-bottom:25px;
+    font-size:38px;
+    font-weight:800;
+    color:#fff;
+    line-height:1.2;
+">
+    Send a Message
+</h2>
+            <form class="contact-form">
+
+                <input type="text"
+                       placeholder="Name"
+                       required>
+
+                <input type="email"
+                       placeholder="Email"
+                       required>
+
+                <input type="text"
+                       placeholder="Subject"
+                       required>
+
+                <textarea
+                    rows="6"
+                    placeholder="Message"
+                    required>
+                </textarea>
+
+                <button type="submit"
+                        class="btn primary-btn">
+
+                    Send 🚀
+
+                </button>
+
+            </form>
 
         </div>
 
@@ -1175,6 +2192,37 @@ function reveal(){
 }
 
 window.addEventListener('scroll', reveal);
+
+/* TIMELINE SCROLL ANIMATION */
+
+const timelineItems =
+document.querySelectorAll('.timeline-container');
+
+function showTimeline(){
+
+    timelineItems.forEach(item => {
+
+        const triggerBottom =
+        window.innerHeight * 0.85;
+
+        const boxTop =
+        item.getBoundingClientRect().top;
+
+        if(boxTop < triggerBottom){
+
+            item.classList.add('show');
+
+        }
+
+    });
+
+}
+
+window.addEventListener('scroll', showTimeline);
+reveal();
+showTimeline();
+
+
 
 /* PARTICLES */
 
