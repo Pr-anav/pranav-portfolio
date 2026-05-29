@@ -890,7 +890,234 @@ SKILLS
 .skill:hover{
     background:#a855f7;
 }
+/* =========================
+PROJECTS
+========================= */
 
+.projects-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(320px,1fr));
+
+    gap:30px;
+}
+
+/* CARD */
+
+.project-card{
+
+    transition:.45s;
+}
+
+.project-card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+    0 0 25px rgba(168,85,247,.25),
+    0 0 50px rgba(168,85,247,.12);
+}
+
+/* TOP */
+
+.project-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+/* ICON */
+
+.project-icon{
+
+    width:65px;
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:26px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #a855f7,
+        #9333ea
+    );
+
+    color:white;
+
+    box-shadow:
+    0 0 20px rgba(168,85,247,.35);
+}
+
+/* BADGE */
+
+.project-badge{
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    background:
+    rgba(168,85,247,.15);
+
+    border:
+    1px solid rgba(168,85,247,.35);
+
+    color:#bb86fc;
+}
+
+/* TITLE */
+
+.project-card h3{
+
+    font-size:26px;
+
+    margin-bottom:20px;
+
+    line-height:1.4;
+
+    color:white;
+}
+
+/* STACK */
+
+.project-stack{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:22px;
+}
+
+.project-stack span{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    font-size:13px;
+
+    color:#ddd;
+}
+
+/* DESCRIPTION */
+
+.project-card p{
+
+    color:#ddd;
+
+    line-height:1.9;
+
+    margin-bottom:25px;
+}
+
+/* HIGHLIGHTS */
+
+.project-highlights{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+}
+
+.highlight{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+
+    transition:.3s;
+}
+/* =========================
+PROJECT FILTERS
+========================= */
+
+.project-filters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.filter-btn{
+    padding:10px 18px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.05);
+    color:#ddd;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter-btn:hover{
+    background:rgba(168,85,247,.2);
+}
+
+.filter-btn.active{
+    background:#a855f7;
+    color:white;
+    box-shadow:0 0 15px rgba(168,85,247,.4);
+}
+
+.project-card.hide{
+    opacity:0;
+    transform:scale(0.9);
+    pointer-events:none;
+    transition:.3s;
+}
+.highlight:hover{
+
+    background:
+    rgba(168,85,247,.12);
+
+    transform:translateX(6px);
+}
+
+.highlight i{
+
+    color:#bb86fc;
+
+    font-size:16px;
+}
 @keyframes pulse{
 
     0%{
@@ -1468,7 +1695,42 @@ PREMIUM CONTACT SECTION
     }
 
 }
+/* =========================
+MODAL
+========================= */
 
+.modal{
+    display:none;
+    position:fixed;
+    z-index:99999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    backdrop-filter:blur(10px);
+}
+
+.modal-content{
+    background:#111;
+    margin:8% auto;
+    padding:30px;
+    width:80%;
+    max-width:700px;
+    border-radius:20px;
+    border:1px solid rgba(168,85,247,.3);
+}
+
+.close{
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+    color:#fff;
+}
+
+.close:hover{
+    color:#a855f7;
+}
 /* =========================
 FOOTER
 ========================= */
@@ -1591,6 +1853,7 @@ RESPONSIVE
 
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+		<a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
 		<a href="#education">Education</a>
         <a href="#contact">Contact</a>
@@ -1688,7 +1951,214 @@ RESPONSIVE
     </div>
 
 </section>
+<!-- =========================
+PROJECTS SECTION
+========================= -->
 
+<section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="project-filters">
+
+        <button class="filter-btn active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter-btn" data-filter="ats">
+            ATS
+        </button>
+
+        <button class="filter-btn" data-filter="banking">
+            Banking
+        </button>
+
+        <button class="filter-btn" data-filter="eipp">
+            O2C
+        </button>
+
+    </div>
+
+    <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="glass-card reveal project-card"
+             data-category="ats">
+
+            <!-- TOP -->
+            <div class="project-top">
+
+                <div class="project-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+
+                <div class="project-badge">
+                    ATS Integration
+                </div>
+
+            </div>
+
+            <!-- TITLE -->
+            <h3>
+                SAP SuccessFactors ↔ SHL Integration
+            </h3>
+
+            <!-- STACK -->
+            <div class="project-stack">
+
+                <span>REST API</span>
+                <span>OAuth2</span>
+                <span>SAP</span>
+                <span>SHL</span>
+                <span>XML</span>
+
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p>
+                Designed and implemented end-to-end integration between
+                SAP SuccessFactors and SHL assessment platform using REST APIs
+                and secure OAuth2 authentication.
+            </p>
+
+            <!-- HIGHLIGHTS -->
+            <div class="project-highlights">
+
+                <div class="highlight">
+                    <i class="fas fa-bolt"></i>
+                    Reduced sync delay by 80%
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-users"></i>
+                    Improved recruiter efficiency
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-shield-alt"></i>
+                    Secure OAuth2 authentication
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="glass-card reveal project-card"
+             data-category="banking">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+
+                <div class="project-badge">
+                    Banking Upgrade
+                </div>
+
+            </div>
+
+            <h3>
+               Temenos T24 Upgrade
+            </h3>
+
+            <div class="project-stack">
+
+                <span>TAFJ</span>
+                <span>InfoBasic</span>
+                <span>Oracle DB</span>
+                <span>Java</span>
+                <span>T24</span>
+
+            </div>
+
+            <p>
+                Successfully upgraded T24 core banking system with zero downtime
+                and improved operational stability.
+            </p>
+
+            <div class="project-highlights">
+
+                <div class="highlight">
+                    <i class="fas fa-database"></i>
+                    Zero downtime deployment
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-clock"></i>
+                    Reduced upgrade cycle by 30%
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-globe"></i>
+                    Global enterprise banking support
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="glass-card reveal project-card"
+             data-category="eipp">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+
+                <div class="project-badge">
+                    EIPP Implementation
+                </div>
+
+            </div>
+
+            <h3>
+                HighRadius EIPP + Okta SSO Integration
+            </h3>
+
+            <div class="project-stack">
+
+                <span>Okta</span>
+                <span>Salesforce</span>
+                <span>SSO</span>
+                <span>HighRadius</span>
+                <span>API Integration</span>
+
+            </div>
+
+            <p>
+                Implemented secure SSO authentication and invoice automation
+                workflows for enterprise Order-to-Cash operations.
+            </p>
+
+            <div class="project-highlights">
+
+                <div class="highlight">
+                    <i class="fas fa-lock"></i>
+                    Enterprise-grade SSO
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-cogs"></i>
+                    Automated invoice workflows
+                </div>
+
+                <div class="highlight">
+                    <i class="fas fa-chart-line"></i>
+                    Improved operational efficiency
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- EXPERIENCE -->
 <section id="experience">
 
@@ -2121,7 +2591,21 @@ RESPONSIVE
     </div>
 
 </section>
+<!-- PROJECT MODAL -->
 
+<div id="project-modal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <h2 id="modal-title"></h2>
+
+        <div id="modal-body"></div>
+
+    </div>
+
+</div>
 <!-- FOOTER -->
 <footer>
     © 2026 Pranav Kumar | Portfolio
@@ -2296,6 +2780,91 @@ VanillaTilt.init(document.querySelectorAll(".glass-card"), {
 
 });
 
+/* =========================
+PROJECT FILTERING(JS)
+========================= */
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        /* ACTIVE BUTTON */
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        /* FILTER VALUE */
+
+        const filterValue =
+        button.getAttribute("data-filter").toLowerCase();
+
+        /* FILTER PROJECTS */
+
+        projectCards.forEach(card => {
+
+            const category =
+            card.getAttribute("data-category").toLowerCase();
+
+            if(filterValue === "all" || category === filterValue){
+
+                card.style.display = "block";
+
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "scale(1)";
+                }, 100);
+
+            } else {
+
+                card.style.opacity = "0";
+                card.style.transform = "scale(0.9)";
+
+                setTimeout(() => {
+                    card.style.display = "none";
+                }, 300);
+
+            }
+
+        });
+
+    });
+
+});
+
+/*MODal JS*/
+const modal = document.getElementById("project-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalBody = document.getElementById("modal-body");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".project-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        modal.style.display = "block";
+
+        modalTitle.innerText = card.querySelector("h3").innerText;
+        modalBody.innerHTML = card.innerHTML;
+
+    });
+
+});
+
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+    if(e.target == modal){
+        modal.style.display = "none";
+    }
+};
 </script>
 
 </body>
